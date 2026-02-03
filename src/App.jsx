@@ -4,6 +4,7 @@ function App() {
   return (
     <>
       <Header props = {"React Fundamentals Training"}/>
+      <h1>Welcome to React !</h1>
     </>
   )
 }
