@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Header({ props }) {
+export default function Header({ text }) {
   return (
     <header>
-      <h1>{props}</h1>
+      <h1>{text}</h1>
     </header>
   );
 }
