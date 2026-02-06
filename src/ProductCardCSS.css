@@ -1,0 +1,33 @@
+
+.product-card {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 12rem;
+  padding: 1.25rem;
+  margin: 0.75rem;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  text-align: center;
+  border: 0.1rem solid black;
+}
+
+.product-card p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.product-card p:first-child {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.product-card p:nth-child(2) {
+  color: #444;
+}
+.in-stock {
+  color: #15803d;
+  font-weight: 600;
+}
+.out-of-stock {
+  color: #dc2626;
+  font-weight: 600;
+}
