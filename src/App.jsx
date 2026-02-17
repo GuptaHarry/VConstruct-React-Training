@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import ProductList from './ProductList';
+import Loader from './Loader';
 
-function App() {
-  const [count, setCount] = useState(0)
+const PRODUCTS = [
+  { id: 1, name: "Laptop", price: 80000, inStock: true },
+  { id: 2, name: "Mouse", price: 800, inStock: false },
+  { id: 3, name: "Keyboard", price: 1500, inStock: true }
+];
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export default function App() {
+  const [status, setStatus] = useState("idle");
+  // created using 3 states => idle | loading | loaded  
+
+  function startLoading() {
+    setStatus("loading");
+
+    setTimeout(() => {
+      setStatus("loaded");
+    }, 2000);
+  }
+
+  if (status === "idle") {
+    return (
+      <button onClick={startLoading}>
+        Load Products
+      </button>
+    );
+  }
+
+  if (status === "loading") {
+    return <Loader />;
+  }
+
+  return <ProductList products={PRODUCTS} />;
 }
-
-export default App
