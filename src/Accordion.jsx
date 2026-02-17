@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import AccordionItem from "./AccordionItem";
 
 export default function Accordion({ items }) {
-  const [openId, setOpenId] = useState(null);
+  const [openIds, setOpenIds] = useState([]);
 
   function handleClick(id) {
-    setOpenId(prev => (prev === id ? null : id)); // toggle logic
+    // if present so remove
+    // otherwise add
+    if (openIds.indexOf(id) == -1) setOpenIds([...openIds, id]);
+    else {
+      setOpenIds(openIds.filter((item) => item !== id));
+    }
   }
 
   return (
     <>
-      {items.map(item => (
+      {items.map((item) => (
         <AccordionItem
           key={item.id}
           item={item}
-          isOpen={openId === item.id}
+          isOpen={openIds.indexOf(item.id) === -1 ? false : true}
           onClick={handleClick}
         />
       ))}
